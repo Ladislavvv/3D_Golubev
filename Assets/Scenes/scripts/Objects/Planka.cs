@@ -1,22 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Planka : MonoBehaviour
+public class Planka : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject PlankaObj;
-    public GameObject Vint1;
-    public GameObject Vint2;
-    
-    // Start is called before the first frame update
-    void Start()
+    bool isPacked = true;
+
+    private Animator anim;
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
+        if (isPacked)
+        {
+            //anim.Rebind();
+            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
+            anim.Play("Planka");
+            Debug.Log(gameObject.name);
+            isPacked = false;
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
+            anim.Play("Planka");
+            Debug.Log(gameObject.name);
+            isPacked = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 }

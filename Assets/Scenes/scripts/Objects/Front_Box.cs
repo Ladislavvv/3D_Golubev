@@ -6,36 +6,30 @@ using UnityEngine.EventSystems;
 public class Front_Box : MonoBehaviour, IPointerClickHandler
 {
 
+    bool isPacked = true;
+
+    private Animator anim;
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if(eventData.pointerId == -1)
-        //{
-        //    Debug.Log("Click");
-        //}
-
-        if (eventData.pointerPress != null)
+        if (isPacked)
         {
-            GameObject clickedObject = eventData.pointerPress.gameObject;
-            // Debug.Log("Object Nme: " + clickedObject.name);
-            if (clickedObject.transform.IsChildOf(transform))
-            {
-                // The clicked object is a child of this parent object
-                Debug.Log("Clicked on child object: " + clickedObject.name);
-            }
+            //anim.Rebind();
+            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
+            anim.Play("Front_Box");
+            Debug.Log(gameObject.name);
+            isPacked = false;
         }
-
-        //if( Planka.gameObject.name)
-
+        else
+        {
+            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
+            anim.Play("Front_Box");
+            Debug.Log(gameObject.name);
+            isPacked = true;
+        }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        anim = GetComponent<Animator>();
     }
 }

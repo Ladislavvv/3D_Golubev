@@ -1,23 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Cables_Red : MonoBehaviour
+public class Cables_Red : MonoBehaviour, IPointerClickHandler
 {
+    bool isPacked = true;
 
-    public GameObject CableRed1;
-    public GameObject CableRed2;
-    public GameObject CableRed3;
-    public GameObject CableRed4;
-    // Start is called before the first frame update
-    void Start()
+    private Animator anim;
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
+        if (isPacked)
+        {
+            //anim.Rebind();
+            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
+            anim.Play("Cables_Red");
+            Debug.Log(gameObject.name);
+            isPacked = false;
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
+            anim.Play("Cables_Red");
+            Debug.Log(gameObject.name);
+            isPacked = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 }
