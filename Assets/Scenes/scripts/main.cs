@@ -4,15 +4,15 @@ using UnityEngine.EventSystems;
 public class main : MonoBehaviour, IPointerClickHandler
 {
     #region gdfg
-    // Передняя крышка
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject Front_Box;
     #endregion
 
     #region dfgdfg
-    // Корпус
+    // пїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject Main_Box;
     #endregion
-    // Клеммник
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject Klemmnik;
 
     public GameObject Klemmnik_Center1;
@@ -27,7 +27,7 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Klemmnik_Vint1;
     public GameObject Klemmnik_Vint2;
 
-    // Винты крышки
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject Big_Vints;
 
     public GameObject Big_Vint1;
@@ -35,7 +35,7 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Big_Vint3;
     public GameObject Big_Vint4;
 
-    // Кабели
+    // пїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject Cables_red;
 
     public GameObject Cable_Red1;
@@ -50,13 +50,13 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Cable_black3;
     public GameObject Cable_black4;
 
-    // Планка
+    // пїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject Planka;
     public GameObject Planka_Vint1;
     public GameObject Planka_Vint2;
 
 
-    // Корпус 1
+    // пїЅпїЅпїЅпїЅпїЅпїЅ 1
     public GameObject Korpus1;
 
     public GameObject Korpus1_Vints;
@@ -69,7 +69,7 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Korpus1_Vint7;
     public GameObject Korpus1_Vint8;
 
-    // Корпус 2
+    // пїЅпїЅпїЅпїЅпїЅпїЅ 2
     public GameObject Korpus2;
 
     public GameObject Korpus2_Vints;
@@ -92,12 +92,12 @@ public class main : MonoBehaviour, IPointerClickHandler
         if (eventData.pointerPress != null)
         {
             GameObject clickedObject = eventData.pointerPress.gameObject;
-            if (clickedObject.transform.IsChildOf(transform))
-            {
-                // The clicked object is a child of this parent object
-                Debug.Log("Clicked on child object: " + clickedObject.name);
-                Debug.Log(Korpus2_Vints.name);
-            }
+            Debug.Log("Object Nme: " + clickedObject.name);
+            // if (clickedObject.transform.IsChildOf(transform))
+            // {
+            //     // The clicked object is a child of this parent object
+            //     Debug.Log("Clicked on child object: " + clickedObject.name);
+            // }
         }
 
         //if( Planka.gameObject.name)
