@@ -3,16 +3,7 @@ using UnityEngine.EventSystems;
 
 public class main : MonoBehaviour, IPointerClickHandler
 {
-    #region gdfg
-    // �������� ������
-    public GameObject Front_Box;
-    #endregion
 
-    #region dfgdfg
-    // ������
-    public GameObject Main_Box;
-    #endregion
-    // ��������
     public GameObject Klemmnik;
 
     public GameObject Klemmnik_Center1;
@@ -27,7 +18,7 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Klemmnik_Vint1;
     public GameObject Klemmnik_Vint2;
 
-    // ����� ������
+    // 
     public GameObject Big_Vints;
 
     public GameObject Big_Vint1;
@@ -35,7 +26,7 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Big_Vint3;
     public GameObject Big_Vint4;
 
-    // ������
+    // 
     public GameObject Cables_red;
 
     public GameObject Cable_Red1;
@@ -50,13 +41,13 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Cable_black3;
     public GameObject Cable_black4;
 
-    // ������
+    // 
     public GameObject Planka;
     public GameObject Planka_Vint1;
     public GameObject Planka_Vint2;
 
 
-    // ������ 1
+    // 
     public GameObject Korpus1;
 
     public GameObject Korpus1_Vints;
@@ -69,7 +60,7 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Korpus1_Vint7;
     public GameObject Korpus1_Vint8;
 
-    // ������ 2
+    // 
     public GameObject Korpus2;
 
     public GameObject Korpus2_Vints;
@@ -84,11 +75,7 @@ public class main : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if(eventData.pointerId == -1)
-        //{
-        //    Debug.Log("Click");
-        //}
-
+ 
         if (eventData.pointerPress != null)
         {
             GameObject clickedObject = eventData.pointerPress.gameObject;

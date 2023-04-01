@@ -1,35 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Front_Box : MonoBehaviour, IPointerClickHandler
 {
-
-    bool isPacked = true;
-
-    private Animator anim;
+    public bool isPacked = true;
+    public Big_Vints Vints;
+    public Animation anim;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isPacked)
+        if (isPacked && !Vints.isPacked)
         {
-            //anim.Rebind();
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
-            anim.Play("Front_Box");
+            anim.Play("FrontBox");
             Debug.Log(gameObject.name);
             isPacked = false;
         }
-        else
+        else if(!isPacked && !Vints.isPacked)
         {
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
-            anim.Play("Front_Box");
+            anim.Play("FrontBoxR");
             Debug.Log(gameObject.name);
             isPacked = true;
         }
-    }
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
+        else
+        {
+            Debug.Log("Error: Винты не откручены!");
+        }
     }
 }

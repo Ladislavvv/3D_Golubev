@@ -1,34 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Planka : MonoBehaviour, IPointerClickHandler
 {
-    bool isPacked = true;
+    public bool isPacked = true;
 
-    private Animator anim;
+    public Korpus1 Korpus1;
+    public Korpus2 Korpus2;
+    public klemmnik klemmnik;
+
+    public Animation anim;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isPacked)
+        if (isPacked && !Korpus1.isPacked && !Korpus2.isPacked && !klemmnik.isPacked)
         {
-            //anim.Rebind();
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
             anim.Play("Planka");
             Debug.Log(gameObject.name);
             isPacked = false;
         }
-        else
+        else if(!isPacked && !Korpus1.isPacked && !Korpus2.isPacked && !klemmnik.isPacked)
         {
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
-            anim.Play("Planka");
+            anim.Play("PlankaR");
             Debug.Log(gameObject.name);
             isPacked = true;
         }
-    }
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
     }
 }

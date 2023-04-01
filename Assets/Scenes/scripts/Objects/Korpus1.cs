@@ -1,35 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Korpus1 : MonoBehaviour, IPointerClickHandler
 {
 
-    bool isPacked = true;
+    public bool isPacked = true;
 
-    private Animator anim;
+    public Cables_Black cables_black;
+    public Cables_Red CabeliBigRed;
+    public Planka Planka;
+
+    public Animation anim;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isPacked)
+        if (isPacked && !cables_black.isPacked && !CabeliBigRed.isPacked)
         {
-            //anim.Rebind();
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
             anim.Play("Korpus1");
             Debug.Log(gameObject.name);
             isPacked = false;
         }
-        else
+        else if(!isPacked && !cables_black.isPacked && !CabeliBigRed.isPacked && Planka.isPacked)
         {
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
-            anim.Play("Korpus1");
+            anim.Play("Korpus1R");
             Debug.Log(gameObject.name);
             isPacked = true;
         }
-    }
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
+        else
+        {
+            Debug.Log("Error: Провода не отсоединены!");
+        }
     }
 }

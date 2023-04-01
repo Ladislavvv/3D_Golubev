@@ -1,34 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Big_Vints : MonoBehaviour, IPointerClickHandler
 {
-    bool isPacked = true;
+    public bool isPacked = true;
 
-    private Animator anim;
+    public Front_Box FrontBox;
+
+    public Animation anim;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isPacked)
+        if (isPacked && FrontBox.isPacked)
         {
-            //anim.Rebind();
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", 1);
-            anim.Play("Big_Vints");
+            anim.Play("BigVints");
             Debug.Log(gameObject.name);
             isPacked = false;
         }
-        else
+        else if(!isPacked && FrontBox.isPacked)
         {
-            gameObject.GetComponent<Animator>().SetFloat("Reverse", -1);
-            anim.Play("Big_Vints");
+            anim.Play("BigVintsR");
             Debug.Log(gameObject.name);
             isPacked = true;
         }
-    }
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
+        else
+        {
+            Debug.Log("Error: Крышка открыта!");
+        }
     }
 }

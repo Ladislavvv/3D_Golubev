@@ -3,35 +3,33 @@ using UnityEngine.EventSystems;
 
 public class klemmnik : MonoBehaviour, IPointerClickHandler
 {
+    public bool isPacked = true;
 
-    public GameObject KlemmnikObj;
-    public GameObject Vints;
+    public Cables_Black cables_black;
+    public Cables_Red CabeliBigRed;
+    public Planka Planka;
 
-    bool isPacked = true;
+    public Animation anim;
 
-    private Animator anim;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isPacked)
+        if (isPacked && !cables_black.isPacked && !CabeliBigRed.isPacked)
         {
-            //anim.Rebind();
-            anim.SetFloat("Reverse", 1);
             anim.Play("Klemmnik");
             Debug.Log(gameObject.name);
             isPacked = false;
+            Debug.Log(isPacked);
+        }
+        else if(!isPacked && !cables_black.isPacked && !CabeliBigRed.isPacked && Planka.isPacked)
+        {
+            anim.Play("KlemmnikR");
+            Debug.Log(gameObject.name);
+            isPacked = true;
+            Debug.Log(isPacked);
         }
         else
         {
-            anim.SetFloat("Reverse", -1);
-            anim.Play("Klemmnik");
-            //anim.Rebind();
-            Debug.Log(gameObject.name);
-            isPacked = true;
+            Debug.Log("Error: Провода не отсоединены!");
         }
-    }
- 
-    void Start()
-    {
-        anim = GetComponent<Animator>();
     }
 }
