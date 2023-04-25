@@ -73,6 +73,8 @@ public class main : MonoBehaviour, IPointerClickHandler
     public GameObject Korpus2_Vint7;
     public GameObject Korpus2_Vint8;
 
+    public GameObject Interface;
+
     public void OnPointerClick(PointerEventData eventData)
     {
  
@@ -91,6 +93,10 @@ public class main : MonoBehaviour, IPointerClickHandler
 
     }
 
+
+    public void InterfaceEnable(){
+        Interface.SetActive(!Interface.activeSelf);
+    }
     void Start()
     {
         
