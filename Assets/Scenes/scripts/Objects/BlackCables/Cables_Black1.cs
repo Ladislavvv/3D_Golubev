@@ -6,6 +6,7 @@ public class Cables_Black1: MonoBehaviour, IPointerClickHandler
 
     public bool isPacked = true;
     public bool isBroken = false;
+    public GameObject CutBtn;
 
     public Animation anim;
     public void OnPointerClick(PointerEventData eventData)
@@ -23,13 +24,27 @@ public class Cables_Black1: MonoBehaviour, IPointerClickHandler
             isPacked = true;
         }
     }
-    public void breakWire()
+    public void Wire()
     {
-        isBroken = true;
+        isBroken = !isBroken;
+        if (isBroken)
+        {
+            CutBtn.transform.Rotate(0, 0, 90f);
+        }
+        else
+        {
+            CutBtn.transform.Rotate(0, 0, -90f);
+        }
+        Debug.Log("Провод "+ this.name + " поврежден: " + isBroken);
     }
 
-    public void fixWire()
+    private void Awake()
     {
-        isBroken = false;
+        CutBtn = GameObject.Find("Cut1");
     }
+
+    //public void fixWire()
+    //{
+    //    isBroken = false;
+    //}
 }

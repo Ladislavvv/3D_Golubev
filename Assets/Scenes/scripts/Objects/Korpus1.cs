@@ -12,13 +12,18 @@ public class Korpus1 : MonoBehaviour, IPointerClickHandler
 
     public Animation anim;
 
+
+    public main Main;
+
+
+
     void Start()
     {
-        //cables_black[0] = GameObject.Find("Provod1");
-        //cables_black[1] = GameObject.Find("Provod2");
+        cables_black[0] = GameObject.Find("Provod1");
+        cables_black[1] = GameObject.Find("Provod2");
 
-        //CabeliBigRed[0] = GameObject.Find("Red5");
-        //CabeliBigRed[1] = GameObject.Find("Red6");
+        CabeliBigRed[0] = GameObject.Find("Red5");
+        CabeliBigRed[1] = GameObject.Find("Red6");
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -5,6 +5,7 @@ public class Cables_Red4 : MonoBehaviour, IPointerClickHandler
 {
     public bool isPacked = true;
     public bool isBroken = false;
+    public GameObject CutBtn;
 
     public Animation anim;
     public void OnPointerClick(PointerEventData eventData)
@@ -22,13 +23,17 @@ public class Cables_Red4 : MonoBehaviour, IPointerClickHandler
             isPacked = true;
         }
     }
-    public void breakWire()
+    public void Wire()
     {
-        isBroken = true;
-    }
-
-    public void fixWire()
-    {
-        isBroken = false;
+        isBroken = !isBroken;
+        if (isBroken)
+        {
+            CutBtn.transform.Rotate(0, 0, 90f);
+        }
+        else
+        {
+            CutBtn.transform.Rotate(0, 0, -90f);
+        }
+        Debug.Log("Провод " + this.name + " поврежден: " + isBroken);
     }
 }
