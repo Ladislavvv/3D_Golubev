@@ -72,33 +72,15 @@ public class main : MonoBehaviour/*, IPointerClickHandler*/
 
     public GameObject Interface;
 
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-
-    //    if (eventData.pointerPress != null)
-    //    {
-    //        GameObject clickedObject = eventData.pointerPress.gameObject;
-    //        Debug.Log("Object Nme: " + clickedObject.name);
-    //        // if (clickedObject.transform.IsChildOf(transform))
-    //        // {
-    //        //     // The clicked object is a child of this parent object
-    //        //     Debug.Log("Clicked on child object: " + clickedObject.name);
-    //        // }
-    //    }
-
-    //    //if( Planka.gameObject.name)
-
-    //}
-
 
     public Korpus1 Korpus1;
     public Korpus2 Korpus2;
 
 
-    public Cables_Black1 Cables_Black1;
-    public Cables_Black2 Cables_Black2;
-    public Cables_Black3 Cables_Black3;
-    public Cables_Black4 Cables_Black4;
+    //public Cables_Black1 Cables_Black1;
+    //public Cables_Black2 Cables_Black2;
+    //public Cables_Black3 Cables_Black3;
+    //public Cables_Black4 Cables_Black4;
 
     public GameObject Provod1;
     public GameObject Provod2;
