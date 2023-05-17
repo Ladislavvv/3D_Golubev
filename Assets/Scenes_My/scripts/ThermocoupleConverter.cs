@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 public class ThermocoupleConverter : MonoBehaviour
 {
     public Termopara TermoparaScript;
 
     // Переменная для хранения значения в милливольтах от термопары
     public float millivolt;
+    public float millivolt2;
 
     // Переменная для хранения значения в миллиамперах для ИПМ 0399/М0
     public float milliampere;
+    public float milliampere2;
 
     // Переменная для хранения значения в градусах Цельсия от термопары
     public float celsius;
+    public float celsius2;
 
     // Переменная для хранения ссылки на другой скрипт, где определена переменная isBroken
 
@@ -33,6 +38,14 @@ public class ThermocoupleConverter : MonoBehaviour
 
     public Cables_Red3 red3;
     public Cables_Red4 red4;
+
+    [SerializeField] TextMeshProUGUI milliVolOut;
+    [SerializeField] TextMeshProUGUI celsiusOut;
+    [SerializeField] TextMeshProUGUI milliAmpereOut;
+
+    [SerializeField] TextMeshProUGUI milliVolOut2;
+    [SerializeField] TextMeshProUGUI celsiusOut2;
+    [SerializeField] TextMeshProUGUI milliAmpereOut2;
 
     void Start()
     {
@@ -181,16 +194,11 @@ public class ThermocoupleConverter : MonoBehaviour
                     millivolt = TermoparaScript.GetVoltage();
                 }
                 else
-                {
                     millivolt = 0;
-                }
             }
             else
-            {
                 millivolt = 0;
-            }
         }
-
         if (this.gameObject == Korpus_2)
         {
             Debug.Log("Korpus_2");
@@ -198,23 +206,40 @@ public class ThermocoupleConverter : MonoBehaviour
             {
                 if (cableScript3.isPacked && cableScript4.isPacked && red1.isPacked && red2.isPacked)
                 {
-                    millivolt = TermoparaScript.GetVoltage();
+                    millivolt2 = TermoparaScript.GetVoltage();
                     //тут вторую термопару нужно подключить
                 }
                 else
-                {
-                    millivolt = 0;
-                }
+                    millivolt2 = 0;
             }
             else
-            {
-                millivolt = 0;
-            }
+                millivolt2 = 0;
+        }
+        if(this.gameObject == Korpus_1)
+        {
+            celsius = MillivoltToCelsius(millivolt);
+            milliampere = CelsiusToMilliampere(celsius);
         }
 
-        celsius = MillivoltToCelsius(millivolt);
-        milliampere = CelsiusToMilliampere(celsius);
-        Debug.Log("мВ: " + millivolt + "     °C: " + celsius + "     мА: " + milliampere);
+        if (this.gameObject == Korpus_2)
+        {
+            celsius2 = MillivoltToCelsius(millivolt2);
+            milliampere2 = CelsiusToMilliampere(celsius2);
+        }
+
+
+        if (this.gameObject == Korpus_1)
+        {
+            milliVolOut.text = Math.Round(millivolt, 2).ToString() + " mV";
+            celsiusOut.text = Math.Round(celsius, 2).ToString() + " °C";
+            milliAmpereOut.text = Math.Round(milliampere, 2).ToString() + " mA";
+        }
+        if (this.gameObject == Korpus_2)
+        {
+            milliVolOut2.text = Math.Round(millivolt2, 2).ToString() + " mV";
+            celsiusOut2.text = Math.Round(celsius2, 2).ToString() + " °C";
+            milliAmpereOut2.text = Math.Round(milliampere2, 2).ToString() + " mA";
+        }
         yield return new WaitForSeconds(1);
         StartCoroutine(UpdateParams());
     }

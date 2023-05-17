@@ -52,9 +52,8 @@ public class Termopara : MonoBehaviour
         {
             TempOut.text = (T2-25).ToString();
 
-            EdsOut.text = ((deltaT - 25)* GradRight.alpha / 1000).ToString();
             voltage = ((deltaT - 25) * GradRight.alpha / 1000);
-            //Debug.Log("voltage: " + voltage);
+            EdsOut.text = voltage.ToString();
         }
         else
         {
