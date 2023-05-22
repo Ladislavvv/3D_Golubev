@@ -23,16 +23,25 @@ public class Graduirovka : MonoBehaviour
     void OnClickHK()
     {
         alpha = 40f;
+        HK.interactable = false;
+        HA.interactable = true;
+        PP.interactable = true;
     }
 
     void OnClickHA()
     {
         alpha = 41f;
+        HA.interactable = false;
+        HK.interactable = true;
+        PP.interactable = true;
     }
 
     void OnClickPP()
     {
         alpha = 7.9f;
+        PP.interactable = false;
+        HK.interactable = true;
+        HA.interactable = true;
     }
     // Update is called once per frame
     void Update()
