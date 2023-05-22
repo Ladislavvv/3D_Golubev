@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.MPE;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Termopara : MonoBehaviour
 {
+    [SerializeField] InputField inputGradus;
     [SerializeField] UnityEngine.UI.Button tempNagreva; // кнопка огонька
     [SerializeField] TextMeshProUGUI Temp; // Вывод температуры слева на спрайте огонька
     [SerializeField] AnimProvod provodLeft; // в данном классе получаем событие левого провода 
@@ -32,27 +34,26 @@ public class Termopara : MonoBehaviour
 
     void OnClick()
     {
-        if (flagOpen)
-            flagOpen = false;
-        else flagOpen = true;
+        if (float.Parse(inputGradus.text) > 600)
+            T2 = 600f;
+        else if (float.Parse(inputGradus.text) < 30)
+            T2 = 30;
+        else
+            T2 = float.Parse(inputGradus.text);
     }
 
     void Update()
     {
         Temp.text = Math.Round(T2, 1).ToString();
-        if (flagOpen)
-        {
-            T2 += Time.deltaTime * 10; // Температура слева повышается
-        }
         // считаем ЭДС слева
         deltaT = T2 - T1;
         EdsLeft = deltaT * GradLeft.alpha / 1000;
         EdsInp.text = "e = " + Math.Round(EdsLeft, 3).ToString() + " мВ";
         if (provodLeft.isOpen || provodRight.isOpen)
         {
-            TempOut.text = (T2-25).ToString();
+            TempOut.text = 25.ToString();
 
-            voltage = ((deltaT - 25) * GradRight.alpha / 1000);
+            voltage = 0;
             EdsOut.text = voltage.ToString();
         }
         else

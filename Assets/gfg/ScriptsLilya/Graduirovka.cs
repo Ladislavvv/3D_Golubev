@@ -22,7 +22,7 @@ public class Graduirovka : MonoBehaviour
 
     void OnClickHK()
     {
-        alpha = 40f;
+        alpha = 26f;
         HK.interactable = false;
         HA.interactable = true;
         PP.interactable = true;
